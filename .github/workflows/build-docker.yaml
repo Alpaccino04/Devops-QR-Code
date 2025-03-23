@@ -16,9 +16,11 @@ jobs:
       - name: Build Docker image
         run: |
           docker build ./api/ -t alpaccino138/devops-qr-code-api-repo:latest  # Build the image and tag it
+          docker build ./front-end-nextjs/ -t alpaccino138/devops-qr-code-frontend-repo:latest  # Build the image and tag it
 
       # Push the Docker image to Docker Hub
       - name: Push image to Docker Hub
         run: |
           docker login -u ${{ secrets.DOCKER_HUB_USERNAME }} -p ${{ secrets.DOCKER_HUB_TOKEN }}  # Use secrets for username and token
           docker push alpaccino138/devops-qr-code-api-repo:latest  # Push the built image to Docker Hub
+          docker push alpaccino138/devops-qr-code-frontend-repo:latest  # Push the built image to Docker Hub
