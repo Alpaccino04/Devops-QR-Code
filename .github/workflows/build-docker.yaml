@@ -1,0 +1,24 @@
+name: Build and Publish Image to Docker Hub
+
+on:
+  workflow_dispatch:  # This triggers the workflow manually (on-demand)
+
+jobs:
+  publish_image:
+    runs-on: ubuntu-latest  # Use the latest Ubuntu runner
+    
+    steps:
+      # Checkout the code
+      - name: Checkout code
+        uses: actions/checkout@v4  # Use the latest version of actions/checkout
+        
+      # Build the Docker image
+      - name: Build Docker image
+        run: |
+          docker build ./api/ -t alpaccino138/devops-qr-code-api-repo:latest  # Build the image and tag it
+
+      # Push the Docker image to Docker Hub
+      - name: Push image to Docker Hub
+        run: |
+          docker login -u ${{ secrets.DOCKER_HUB_USERNAME }} -p ${{ secrets.DOCKER_HUB_TOKEN }}  # Use secrets for username and token
+          docker push alpaccino138/devops-qr-code-api-repo:latest  # Push the built image to Docker Hub
