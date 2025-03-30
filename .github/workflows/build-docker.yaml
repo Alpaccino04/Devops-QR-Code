@@ -1,7 +1,12 @@
 name: Build and Publish Image to Docker Hub
 
 on:
-  workflow_dispatch:  # This triggers the workflow manually (on-demand)
+  push:
+    branches:
+      - main
+      paths:
+        - 'api/Dockerfile'
+        - 'front-end-nextjs/Dockerfile'  # This triggers when change is made in the dockerfile
 
 jobs:
   publish_image:
