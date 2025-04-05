@@ -110,3 +110,7 @@ resource "aws_security_group" "web_sg" {
 }
 
 
+<<<<<<< HEAD
+=======
+
+>>>>>>> a17bd19 (Add Terraform configuration files1)
