@@ -8,8 +8,8 @@ terraform {
 }
 
 provider "aws" {
-  profile = "my-second-profile"  # Profile should be a string
-  region  = "us-east-1"
+  region = "us-east-1"
 }
+
 
 
